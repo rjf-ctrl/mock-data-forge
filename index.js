@@ -1,32 +1,14 @@
 const fs = require("fs");
 const name = JSON.parse(fs.readFileSync("names.json", "utf-8"));
+const {
+    randomPerson,
+    randomString,
+    randomInteger,
+    randomFloat,
+    randomImageUrl,
+    randomFileUrl
+} = require("./random");
 
-
-function randomPerson() {
-    return name[Math.floor(Math.random() * name.length)];
-}
-
-
-function randomString(length = 6) {
-  const chars = "abcdefghijklmnopqrstuvwxyz";
-  let str = "";
-
-  for (let i = 0; i < length; i++) {
-    str += chars[Math.floor(Math.random() * chars.length)];
-  }
-
-  return str;
-}
-
-
-function randomInteger(min = 0, max = 100) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function randomFloat(min = 0, max = 10, decimals = 2) {
-  const num = Math.random() * (max - min) + min;
-  return Number(num.toFixed(decimals));
-}
 
 
 function generateData(schema) {
@@ -40,19 +22,19 @@ function generateData(schema) {
         }
 
         if (type === "first name") {
-            result[field] = randomPerson().First;
+            result[field] = randomPerson(name).First;
         }
 
         if (type === "last name") {
-            result[field] = randomPerson().Last;
+            result[field] = randomPerson(name).Last;
         }
 
         if (type === "middle name") {
-            result[field] = randomPerson().Mid;
+            result[field] = randomPerson(name).Mid;
         }
 
         if (type === "full name") {
-            result[field] = randomPerson().Full;
+            result[field] = randomPerson(name).Full;
         }
 
         if (type === "uuid") {
@@ -72,13 +54,20 @@ function generateData(schema) {
         }
 
         if (type === "email") {
-            result[field] = randomPerson().Email;
+            result[field] = randomPerson(name).Email;
         }
 
         if (type === "phone") {
-            result[field] = randomPerson().Phone;
+            result[field] = randomPerson(name).Phone;
         }
 
+        if (type === "image") {
+            result[field] = randomImageUrl();
+        }
+
+         if (type === "file") {
+            result[field] = randomFileUrl();
+        }
     } return result;
 }
 
@@ -94,7 +83,8 @@ const schema = {
     email: "email",
     phone: "phone",
     is_active: "boolean",
-
+    image: "image",
+    file: "file"
 };
 
 const output = generateData(schema);
