@@ -1,4 +1,5 @@
-function randomString(length = 6) {
+function randomString(min, max) {
+  const length=Math.floor(Math.random()*(max-min)) + min;
   const chars = "abcdefghijklmnopqrstuvwxyz";
   let str = "";
 
@@ -9,11 +10,11 @@ function randomString(length = 6) {
   return str;
 }
 
-function randomInteger(min = 0, max = 100) {
+function randomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function randomFloat(min = 0, max = 10, decimals = 2) {
+function randomFloat(min, max, decimals = 2) {
   const num = Math.random() * (max - min) + min;
   return Number(num.toFixed(decimals));
 }

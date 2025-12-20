@@ -1,17 +1,114 @@
 {
-  "id": "uuid",
-  "full_name": "full name",
-  "age": "integer",
-  "skills": ["string"],
-  "address": {
-    "street": "string",
-    "city": "string",
-    "zipcode": "integer"
+  "id": {
+    "type": "uuid"
   },
-  "contacts": [
-    {
+
+  "username": {
+    "type": "string",
+    "min": 5,
+    "max": 12
+  },
+
+  "age": {
+    "type": "integer",
+    "min": 18,
+    "max": 60
+  },
+
+  "isActive": "boolean",
+
+  "profile": {
+    "firstName": "first name",
+    "lastName": "last name",
+
+    "bio": {
       "type": "string",
-      "value": "email"
+      "min": 20,
+      "max": 100
+    },
+
+    "contact": {
+      "email": "email",
+      "phone": "phone"
     }
-  ]
+  },
+
+  "skills": {
+    "type": "array",
+    "min": 2,
+    "max": 5,
+    "item": {
+      "type": "string",
+      "min": 3,
+      "max": 10
+    }
+  },
+
+  "education": {
+    "type": "array",
+    "min": 1,
+    "max": 3,
+    "item": {
+      "degree": {
+        "type": "string",
+        "choices": ["BTech", "MTech", "PhD"]
+      },
+      "year": {
+        "type": "integer",
+        "min": 2015,
+        "max": 2024
+      },
+      "subjects": {
+        "type": "array",
+        "min": 2,
+        "max": 4,
+        "item": {
+          "type": "string",
+          "min": 4,
+          "max": 15
+        }
+      }
+    }
+  },
+
+  "projects": {
+    "type": "array",
+    "min": 1,
+    "max": 2,
+    "item": {
+      "name": {
+        "type": "string",
+        "min": 5,
+        "max": 30
+      },
+      "techStack": {
+        "type": "array",
+        "min": 2,
+        "max": 5,
+        "item": "string"
+      },
+      "contributors": {
+        "type": "array",
+        "min": 1,
+        "max": 3,
+        "item": {
+          "name": "full name",
+          "role": {
+            "type": "string",
+            "choices": ["developer", "tester", "manager"]
+          }
+        }
+      }
+    }
+  },
+
+  "metadata": {
+    "createdAt": "date",
+    "tags": {
+      "type": "array",
+      "min": 1,
+      "max": 4,
+      "item": "string"
+    }
+  }
 }

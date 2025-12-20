@@ -1,12 +1,11 @@
-
 {
   "name": "mock-data-forge",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "bin": {
-  "mockgen": "./mockgen.js" 
-    },
+    "mockgen": "./mockgen.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +14,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@faker-js/faker": "^10.1.0"
+    "@faker-js/faker": "^10.1.0",
+    "randexp": "^0.5.3"
   }
 }
