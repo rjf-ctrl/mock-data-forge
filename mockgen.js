@@ -1,4 +1,13 @@
+#!/usr/bin/env node
+
 const fs = require("fs");
+const inputPath = process.argv[2];
+const outputPath = process.argv[3];
+
+if(!inputPath || !outputPath) {
+    console.log("Usage: node mockgen.js <schema.json> <output.json>");
+    process.exit(1);
+}
 
 const { faker } = require("@faker-js/faker");  // CommonJS
 
@@ -76,6 +85,7 @@ function generateData(schema) {
     } return result;
 }
 
-const schema = JSON.parse(fs.readFileSync("schema.json", "utf-8"));
+const schema = JSON.parse(fs.readFileSync(inputPath, "utf-8"));
 const output = generateData(schema);
-fs.writeFileSync("output.json", JSON.stringify(output, null, 2));
+fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
+console.log(`Mock data generated in ${outputPath}`);
