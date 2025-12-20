@@ -1,16 +1,17 @@
 {
-    "id": "uuid",
-    "age": "integer",
-    "decimal": "float",
-    "gibberish": "string",
-    "first_name": "first name",
-    "last_name": "last name",
-   "middle_name": "middle name",
-    "full_name": "full name",
-    "email": "email",
-    "phone": "phone",
-    "date": "date",
-    "is_active": "boolean",
-    "image": "image",
-    "file": "file"
+  "id": "uuid",
+  "full_name": "full name",
+  "age": "integer",
+  "skills": ["string"],
+  "address": {
+    "street": "string",
+    "city": "string",
+    "zipcode": "integer"
+  },
+  "contacts": [
+    {
+      "type": "string",
+      "value": "email"
+    }
+  ]
 }

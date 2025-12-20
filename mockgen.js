@@ -27,59 +27,70 @@ function generateData(schema) {
     for(const field in schema) {
         const type = schema[field];
 
-        if(type === "boolean") {
-            result[field] = Math.random() <0.5;
+        if(typeof type === "object" && !Array.isArray(type)) {
+            result[field]= generateData(type);
+            continue;
         }
 
-        if (type === "first name") {
+        if(Array.isArray(type)){
+            const arrType = type[0]; 
+            const length = 3;
+            result[field] = Array.from({length}, () => generateData({item: arrType}).item);
+            continue;
+        }
+
+        if(type === "boolean") {result[field] = Math.random() <0.5;
+        }
+
+        else if (type === "first name") {
             result[field] = faker.person.firstName();
         }
 
-        if (type === "last name") {
+        else if (type === "last name") {
             result[field] = faker.person.lastName();
         }
 
-        if (type === "middle name") {
+        else if (type === "middle name") {
             result[field] = faker.person.middleName();
         }
 
-        if (type === "full name") {
+        else if (type === "full name") {
             result[field] = faker.person.fullName();
         }
 
-        if (type === "uuid") {
+        else if (type === "uuid") {
             result[field] = faker.string.uuid();
         }
 
-        if (type === "string"){
+        else if (type === "string"){
             result[field] = randomString();
         }
 
-         if (type === "integer") {
+        else if (type === "integer") {
             result[field] = randomInteger();
         }
 
-        if (type === "float") {
+        else if (type === "float") {
             result[field] = randomFloat();
         }
 
-        if (type === "email") {
+        else if (type === "email") {
             result[field] = faker.internet.email();
         }
 
-        if (type === "phone") {
+        else if (type === "phone") {
             result[field] = faker.phone.number();
         }
 
-        if (type === "image") {
+        else if (type === "image") {
             result[field] = randomImageUrl();
         }
 
-         if (type === "date") {
+        else if (type === "date") {
             result[field] = faker.date.birthdate({ min: 18, max: 60, mode: 'age' });
         }
 
-         if (type === "file") {
+        else if (type === "file") {
             result[field] = randomFileUrl();
         }
     } return result;
