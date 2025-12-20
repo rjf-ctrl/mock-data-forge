@@ -76,22 +76,6 @@ function generateData(schema) {
     } return result;
 }
 
-const schema = {
-    id: "uuid",
-    age: "integer",
-    decimal: "float",
-    gibberish: "string",
-    first_name: "first name",
-    last_name: "last name",
-    middle_name: "middle name",
-    full_name: "full name",
-    email: "email",
-    phone: "phone",
-    date: "date",
-    is_active: "boolean",
-    image: "image",
-    file: "file"
-};
-
+const schema = JSON.parse(fs.readFileSync("schema.json", "utf-8"));
 const output = generateData(schema);
-console.log(output);
+fs.writeFileSync("output.json", JSON.stringify(output, null, 2));
