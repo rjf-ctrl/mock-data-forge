@@ -1,8 +1,3 @@
-
-function randomPerson(names) {
-    return names[Math.floor(Math.random() * names.length)];
-}
-
 function randomString(length = 6) {
   const chars = "abcdefghijklmnopqrstuvwxyz";
   let str = "";
@@ -13,7 +8,6 @@ function randomString(length = 6) {
 
   return str;
 }
-
 
 function randomInteger(min = 0, max = 100) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -39,13 +33,10 @@ function randomFileUrl() {
     return files[Math.floor(Math.random() * files.length)];
 }
 
-
-
 module.exports = {
-    randomPerson,
-    randomString,
     randomInteger,
     randomFloat,
     randomImageUrl,
-    randomFileUrl
-};
+    randomFileUrl, 
+    randomString,
+}; 

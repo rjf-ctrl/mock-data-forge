@@ -1,7 +1,8 @@
 const fs = require("fs");
-const name = JSON.parse(fs.readFileSync("names.json", "utf-8"));
+
+const { faker } = require("@faker-js/faker");  // CommonJS
+
 const {
-    randomPerson,
     randomString,
     randomInteger,
     randomFloat,
@@ -22,23 +23,23 @@ function generateData(schema) {
         }
 
         if (type === "first name") {
-            result[field] = randomPerson(name).First;
+            result[field] = faker.person.firstName();
         }
 
         if (type === "last name") {
-            result[field] = randomPerson(name).Last;
+            result[field] = faker.person.lastName();
         }
 
         if (type === "middle name") {
-            result[field] = randomPerson(name).Mid;
+            result[field] = faker.person.middleName();
         }
 
         if (type === "full name") {
-            result[field] = randomPerson(name).Full;
+            result[field] = faker.person.fullName();
         }
 
         if (type === "uuid") {
-        result[field] = Math.random().toString(36).substring(2,10);
+            result[field] = faker.string.uuid();
         }
 
         if (type === "string"){
@@ -54,15 +55,19 @@ function generateData(schema) {
         }
 
         if (type === "email") {
-            result[field] = randomPerson(name).Email;
+            result[field] = faker.internet.email();
         }
 
         if (type === "phone") {
-            result[field] = randomPerson(name).Phone;
+            result[field] = faker.phone.number();
         }
 
         if (type === "image") {
             result[field] = randomImageUrl();
+        }
+
+         if (type === "date") {
+            result[field] = faker.date.birthdate({ min: 18, max: 60, mode: 'age' });
         }
 
          if (type === "file") {
@@ -82,6 +87,7 @@ const schema = {
     full_name: "full name",
     email: "email",
     phone: "phone",
+    date: "date",
     is_active: "boolean",
     image: "image",
     file: "file"
