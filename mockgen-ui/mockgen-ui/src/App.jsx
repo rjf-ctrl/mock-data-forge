@@ -1,9 +1,14 @@
 import {useState} from "react";
 import './App.css';
+import FieldEditor from "./FieldEditor";
+import buildSchema from './BuildSchema';
+
 
 function App() {
   const [fields, setFields] = useState([]);
   const [schema, setSchema] = useState({});
+  const [mockData, setMockData] = useState(null);
+
 
   return (
     <div className="app-container">
@@ -16,7 +21,7 @@ function App() {
     <button
       className= "button button-add"
       onClick={() => {
-        setFields([...fields, {id: Date.now(), name: "", type: "string", min: "", max: ""}]);
+        setFields([...fields, {id: Date.now(), name: "", type: "string", min: "", max: "", item: null, fields: [] }]);
         }
       }
     >
@@ -25,76 +30,22 @@ function App() {
   
 
     {fields.map(field => (
-      <div 
-        key={field.id} className="field-card">
-        <input
-          className="field-input"
-          placeholder="Field Name"
-          value={field.name}
-          onChange = {e => {
-            setFields(fields.map(f => {
-              return f.id === field.id ? {...f, name: e.target.value} : f;
-            }));
-            }
-          }
-        >
-        </input>
-        <select
-          className="field-select"
-          value={field.type}
-          onChange={e => {
-            setFields(fields.map(f =>
-             f.id === field.id ? { ...f, type: e.target.value } : f
-            ));
-          }}
-        >
-          <option value="string">String</option>
-          <option value="integer">Integer</option>
-          <option value="float">Float</option>
-          <option value="boolean">Boolean</option>
-          <option value="array">Array</option>
-          <option value="object">Object</option>
-        </select>
-
-        {(field.type === "string" || field.type === "integer" || field.type === "float") && (
-            <div className="min-max-container">
-            <input
-              placeholder="Min"
-              value={field.min}
-              onChange={e=> {
-                setFields(fields.map(f => 
-                  f.id === field.id ? {...f, min: e.target.value} : f
-                ));
-              }}
-            />
-
-            <input
-              className="min-max-input"
-              placeholder="Max"
-              value={field.max}
-              onChange={e => {
-                setFields(fields.map(f =>
-                  f.id === field.id ? { ...f, max: e.target.value } : f
-                ));
-              }}
-            />
-
-            </div>
-        )}
-        
-      </div>
+      <FieldEditor
+        key={field.id}
+        field={field}
+        setField={updatedField =>
+          setFields(fields.map(f => f.id === field.id ? updatedField : f))
+        }
+      />
     ))}
 
     <button
       className="button button-generate"
       onClick={() => {
         const newSchema = {};
-        fields.forEach(f => {
-          newSchema[f.name] = {
-            type: f.type,
-            ...(f.min!="" && { min: Number(f.min) }),
-            ...(f.max !== "" && { max: Number(f.max) })
-          };
+        fields.forEach(field => {
+        if (!field.name) return;
+        newSchema[field.name] = buildSchema(field);
         });
         setSchema(newSchema);
         console.log(schema);
@@ -105,6 +56,7 @@ function App() {
     </div>
      
     <div className="json-column">
+      <h3>Schema</h3>
       <pre>{JSON.stringify(schema, null, 2)}</pre>
     </div>
     </div>
