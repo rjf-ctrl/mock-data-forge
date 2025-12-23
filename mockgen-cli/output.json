@@ -1,59 +1,79 @@
 {
-  "id": "314ff0c3-9e0b-4407-8574-2a9551d47693",
-  "username": "ulhml",
-  "age": 51,
-  "isActive": true,
+  "id": "cdbcf0ef-2892-4276-9b17-b8385adfcf49",
+  "username": "mqbsngede",
+  "age": 45,
+  "isActive": false,
   "profile": {
-    "firstName": "Junior",
-    "lastName": "Stroman",
-    "bio": "oaahwnvvxwtflimuladbuqcyvgiwuutsnhhorvwlcuvqnunojznuuymozvglrglopqshhdoykcrfiyraf",
+    "firstName": "Antonina",
+    "lastName": "Mills",
+    "bio": "okcomlwfvesnydsxhvdlmete",
     "contact": {
-      "email": "Cory.Schinner@hotmail.com",
-      "phone": "1-786-312-6889"
+      "email": "Jaylen66@gmail.com",
+      "phone": "376-532-1187 x2608"
     }
   },
   "skills": [
-    "myqutdmpp",
-    "ulch",
-    "vpe"
+    "cql",
+    "fbi",
+    "ffjlrmod",
+    "ywgjtdwy",
+    "xwdkqe"
   ],
   "education": [
     {
-      "degree": "MTech",
-      "year": 2018,
+      "degree": "PhD",
+      "year": 2019,
       "subjects": [
-        "taurqlpue",
-        "uwbfeox",
-        "ariirvkfpxy",
-        "wtwamkeqtc"
+        "hounmgs",
+        "djwuaagljl",
+        "axliqrrjwmqsl"
       ]
     }
   ],
   "projects": [
     {
-      "name": "euayns",
+      "name": "vbxwczgqkwoctayniicv",
       "techStack": [
-        "hgvuomluhqocjjv",
-        "olwscbyaen"
+        "shwqyncoqpyvf",
+        "mqugsfbsktrg",
+        "vbwvksmoqtbuyflub"
       ],
       "contributors": [
         {
-          "name": "Ismael Jacobi-Renner I",
+          "name": "Jamie Goodwin",
+          "role": "developer"
+        },
+        {
+          "name": "Deborah Kreiger",
           "role": "manager"
         },
         {
-          "name": "Candice Johns",
-          "role": "developer"
+          "name": "Lorena Morar-Jones",
+          "role": "tester"
+        }
+      ]
+    },
+    {
+      "name": "fsshiqoviyhjjtqphfbdjvtuglgi",
+      "techStack": [
+        "yuuiopcyp",
+        "pvlaprkyqdwchxk",
+        "saqsalzcalvierbmy",
+        "hdjzhyfhvdybhitec"
+      ],
+      "contributors": [
+        {
+          "name": "Blake Becker",
+          "role": "tester"
         }
       ]
     }
   ],
   "metadata": {
-    "createdAt": "1993-07-11T14:09:35.496Z",
+    "createdAt": "1968-03-09T15:23:20.363Z",
     "tags": [
-      "uqntoizxkamkocesnum",
-      "jhayftbjd",
-      "mbdehwhwzztke"
+      "pssdxlyknz",
+      "pcqzjsersvtofec"
     ]
   }
 }

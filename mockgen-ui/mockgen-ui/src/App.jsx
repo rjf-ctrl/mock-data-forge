@@ -41,23 +41,37 @@ function App() {
 
     <button
       className="button button-generate"
-      onClick={() => {
-        const newSchema = {};
-        fields.forEach(field => {
+      onClick={async () => {
+      const newSchema = {};
+      fields.forEach(field => {
         if (!field.name) return;
         newSchema[field.name] = buildSchema(field);
-        });
-        setSchema(newSchema);
-        console.log(schema);
+      });
+
+      setSchema(newSchema);
+
+      const res = await fetch("http://localhost:3001/generator", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newSchema)
+      });
+
+      const data = await res.json();
+      setMockData(data);
+
       }}
     >
-      Generate Schema
+      Generate Mock Data
     </button>
+
     </div>
      
     <div className="json-column">
-      <h3>Schema</h3>
-      <pre>{JSON.stringify(schema, null, 2)}</pre>
+      <h3>Mock Data</h3>
+      {mockData && (
+        <pre>{JSON.stringify(mockData, null, 2)}</pre>
+      )}
+
     </div>
     </div>
     </div>
