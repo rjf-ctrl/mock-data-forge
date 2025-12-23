@@ -8,6 +8,7 @@ function App() {
   const [fields, setFields] = useState([]);
   const [schema, setSchema] = useState({});
   const [mockData, setMockData] = useState(null);
+  const [showHelp, setShowHelp] = useState(true);
 
 
   return (
@@ -17,6 +18,25 @@ function App() {
       </header>
     <div className="main-content">
     <div className="form-column">
+
+    {showHelp && (
+      <div className="help-banner">
+        <div className="help-text">
+          <strong>How to use Mock Data Forge</strong>
+          <span>
+            Add fields → choose types → configure constraints → click{" "}
+            <b>Generate Mock Data</b>
+          </span>
+        </div>
+        <button
+          className="help-close"
+          onClick={() => setShowHelp(false)}
+        >
+          ✕
+        </button>
+      </div>
+    )}
+
   
     <button
       className= "button button-add"
