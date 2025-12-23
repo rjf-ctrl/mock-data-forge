@@ -25,6 +25,7 @@ function App() {
           <strong>How to use Mock Data Forge</strong>
           <span>
             Add fields → choose types → configure constraints → click{" "}
+            Nested arrays/objects are supported
             <b>Generate Mock Data</b>
           </span>
         </div>
