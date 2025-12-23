@@ -1,4 +1,6 @@
 import React from "react";
+import { DATA_TYPES } from "./dataTypes";
+
 
 function FieldEditor({ field, setField }) {
   return (
@@ -12,46 +14,58 @@ function FieldEditor({ field, setField }) {
       />
 
       {/* Type Selector */}
-      <select
+        <select
         className="field-select"
-        value={field.type || ""}
+        value={field.type}
         onChange={e => {
-        const newType = e.target.value;
+            const newType = e.target.value;
 
-        setField({
+            setField({
             ...field,
             type: newType,
             min: "",
             max: "",
             item: newType === "array" ? field.item : null,
             fields: newType === "object" ? field.fields : []
-        });
+            });
         }}
+        >
+        {DATA_TYPES.map(t => (
+            <option key={t.value} value={t.value}>
+            {t.label}
+            </option>
+        ))}
+        </select>
 
-      >
-        <option value="string">String</option>
-        <option value="integer">Integer</option>
-        <option value="float">Float</option>
-        <option value="boolean">Boolean</option>
-        <option value="array">Array</option>
-        <option value="object">Object</option>
-      </select>
 
       {/* Min/Max for primitives */}
-      {(field.type === "string" || field.type === "integer" || field.type === "float") && (
+      {["string", "integer", "float", "array"].includes(field.type) && (
         <div className="min-max-container">
           <input
-            placeholder="Min"
+            placeholder={field.type === "array" ? "Min items" : "Min"}
             value={field.min || ""}
             onChange={e => setField({ ...field, min: e.target.value })}
           />
           <input
-            placeholder="Max"
+            placeholder={field.type === "array" ? "Max items" : "Max"}
             value={field.max || ""}
             onChange={e => setField({ ...field, max: e.target.value })}
           />
+
         </div>
       )}
+
+          {/*After your Type Selector & Min/Max section*/}
+        {field.type !== "array" && field.type !== "object" && (
+        <div className="choices-container">
+            <input
+            placeholder="Choices (space-separated)"
+            value={field.choices || ""}
+            onChange={e => setField({ ...field, choices: e.target.value })}
+            />
+        </div>
+        )}
+
 
       {/* Array Item (recursive) */}
       {field.type === "array" && (

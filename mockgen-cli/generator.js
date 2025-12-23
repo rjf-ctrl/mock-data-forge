@@ -28,7 +28,7 @@ function generateData(schema) {
       max = cat.max;
       choices = cat.choices;
       regex = cat.regex;
-      item = cat.item;
+      item = cat.items;
     }
 
     if (type === "array") {
@@ -79,8 +79,19 @@ function generateData(schema) {
     else if (type === "email") result[field] = faker.internet.email();
     else if (type === "phone") result[field] = faker.phone.number();
     else if (type === "image") result[field] = randomImageUrl();
-    else if (type === "date")
-      result[field] = faker.date.birthdate({ min: 18, max: 60, mode: "age" });
+    else if (type === "date") {
+      const dateObj = faker.date.birthdate({
+        min: 18,
+        max: 60,
+        mode: "age"
+      });
+
+      const day = String(dateObj.getDate()).padStart(2, "0");
+      const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+      const year = String(dateObj.getFullYear()).slice(-2);
+
+      result[field] = `${day}-${month}-${year}`;
+    }
     else if (type === "file") result[field] = randomFileUrl();
   }
 

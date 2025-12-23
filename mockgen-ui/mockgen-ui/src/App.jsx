@@ -69,8 +69,8 @@ function App() {
     <div className="json-column">
       <h3>Mock Data</h3>
       {mockData && (
-        <pre>{JSON.stringify(mockData, null, 2)}</pre>
-      )}
+      <pre>{JSON.stringify(mockData, null, 2)}</pre>
+    )}
 
     </div>
     </div>

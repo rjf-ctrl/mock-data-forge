@@ -187,3 +187,15 @@ html, body, #root {
 .field-card[data-type="object"] {
   border-left: 4px solid #6366f1; /* indigo */
 }
+
+.choices-container {
+  margin-top: 8px;
+}
+.choices-container input {
+  width: 100%;
+  padding: 4px;
+  font-size: 14px;
+}
+
+
+
