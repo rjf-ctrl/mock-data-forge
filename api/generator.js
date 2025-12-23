@@ -1,7 +1,7 @@
 // api/generator.js
 const { generateData } = require("../mockgen-cli/generator");
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const schema = req.body;
@@ -13,4 +13,4 @@ export default async function handler(req, res) {
   } else {
     res.status(405).json({ error: "Method not allowed" });
   }
-}
+};
