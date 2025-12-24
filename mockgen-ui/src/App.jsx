@@ -25,6 +25,7 @@ function App() {
           <strong>How to use Mock Data Forge</strong>
           <span>
             Add fields → choose types → configure constraints → click{" "}
+            Nested arrays/objects are supported
             <b>Generate Mock Data</b>
           </span>
         </div>
@@ -70,7 +71,11 @@ function App() {
 
       setSchema(newSchema);
 
+<<<<<<< HEAD:mockgen-ui/src/App.jsx
       const res = await fetch("/api/generator", {
+=======
+      const res = await fetch("api/generator", {
+>>>>>>> 4a3b22c7e37f2885ad1527b8f527be55d83b7c17:mockgen-ui/mockgen-ui/src/App.jsx
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newSchema)
